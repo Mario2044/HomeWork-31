@@ -34,3 +34,20 @@ delayReturningNumber().then(function(result) {
   alert(result); // 42
 });
 
+//Створіть функцію, яка приймає масив чисел та повертає Promise, що виконується після знаходження максимального числа в масиві.
+
+function maxNumberPromise(numbers) {
+  return new Promise(function(resolve, reject){
+    if(Array.isArray(numbers) && numbers.length > 0) {
+      const maxNumber = Math.max(...numbers);
+      resolve(maxNumber);
+    } else {
+      reject('error')
+    }
+  });
+}
+
+const numbers = [2,4,66,4,222,768,1];
+maxNumberPromise(numbers)
+.then(maxNumber => console.log(`Максимальное число: ${maxNumber}`))
+.catch(error => console.error(`Ошибка: ${error}`));
